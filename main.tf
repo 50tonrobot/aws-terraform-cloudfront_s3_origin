@@ -117,6 +117,7 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
     target_origin_id       = var.target_origin_id
     trusted_signers        = var.trusted_signers
     viewer_protocol_policy = var.viewer_protocol_policy
+    cache_policy_id        = var.cache_policy_id
 
     # Removing this property due to issues dynamically providing these values.  Will be reenabled
     # after release of terraform v0.12 and support for dynamic config blocks.
