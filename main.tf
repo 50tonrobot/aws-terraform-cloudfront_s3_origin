@@ -166,6 +166,15 @@ resource "aws_cloudfront_distribution" "cf_distribution" {
         value = custom_header.value.value
       }
     }
+    
+    custom_origin_config {
+      http_port                = var.http_port
+      https_port               = var.https_port
+      origin_keepalive_timeout = var.origin_keepalive_timeout
+      origin_protocol_policy   = var.origin_protocol_policy
+      origin_read_timeout      = var.origin_read_timeout
+      origin_ssl_protocols     = var.origin_ssl_protocols
+    }
 
     s3_origin_config {
       origin_access_identity = var.origin_access_identity
