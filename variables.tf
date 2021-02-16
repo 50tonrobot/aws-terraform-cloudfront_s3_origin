@@ -28,6 +28,12 @@ variable "bucket_logging" {
   default     = false
 }
 
+variable "cache_policy_id" {
+  description = "The cache policy id for the default cache behavior."
+  type        = string
+  default     = ""
+}
+
 variable "cached_methods" {
   description = "HTTP methods for which CloudFront caches responses. Allowed values are: [\"HEAD\", \"GET\"] or [\"GET\", \"HEAD\", \"OPTIONS\"]."
   type        = list(string)
