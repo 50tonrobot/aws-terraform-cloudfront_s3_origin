@@ -116,10 +116,22 @@ variable "headers" {
   default     = []
 }
 
+variable "http_port" {
+  description = "The HTTP port the custom origin listens on."
+  type        = string
+  default     = "80"
+}
+
 variable "http_version" {
   description = "The maximum HTTP version to support on the distribution. Allowed values are http1.1 and http2. The default is http2."
   type        = string
   default     = "http2"
+}
+
+variable "https_port" {
+  description = "The HTTPS port the custom origin listens on."
+  type        = string
+  default     = "443"
 }
 
 variable "iam_certificate_id" {
@@ -196,10 +208,34 @@ variable "origin_id" {
   type        = string
 }
 
+variable "origin_keepalive_timeout" {
+  description = "The Custom KeepAlive timeout, in seconds. By default, AWS enforces a limit of 60. But you can request an increase. (OPTIONAL)"
+  type        = string
+  default     = "60"
+}
+
 variable "origin_path" {
   description = "The path that CloudFront uses to request content from an S3 bucket or custom origin. The combination of the DomainName and OriginPath properties must resolve to a valid path. The value must start with a slash mark (/) and cannot end with a slash mark. (OPTIONAL)"
   type        = string
   default     = ""
+}
+
+variable "origin_protocol_policy" {
+  description = "The origin protocol policy to apply to your origin. One of http-only, https-only, or match-viewer."
+  type        = string
+  default     = "https-only"
+}
+
+variable "origin_read_timeout" {
+  description = "The Custom Read timeout, in seconds. By default, AWS enforces a limit of 60. But you can request an increase. (OPTIONAL)"
+  type        = string
+  default     = "60"
+}
+
+variable "origin_ssl_protocols" {
+  description = "he SSL/TLS protocols that you want CloudFront to use when communicating with your origin over HTTPS. A list of one or more of SSLv3, TLSv1, TLSv1.1, and TLSv1.2."
+  type        = list(string)
+  default     = ["TLSv1.2"]
 }
 
 variable "path_pattern" {
